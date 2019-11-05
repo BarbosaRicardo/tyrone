@@ -50,7 +50,7 @@ def createList(target):
 	
 		filename = "tyrone.txt"
 
-		with open(filename, "r") as file:
+		with open(filename, "r", encoding= "utf8") as file:
 			for line in file:
 				if line.lower().startswith(target) == True:
 					display_list.append(line)
