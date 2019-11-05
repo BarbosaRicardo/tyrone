@@ -53,11 +53,17 @@ def createList(target):
 		with open(filename, "r", encoding= "utf8") as file:
 			for line in file:
 				if line.lower().startswith(target) == True:
-					display_list.append(line)
+					#removes the target plus the symbol
+					line = line[len(target)+1:]
+					#appends edited string to the display list
+					display_list.append(line)	
+	
 	except FileNotFoundError:
 		print("File not found. Tyrone is not in.")
 		exit()
-		
+#this code below is no longer needed as the the program display_list now has
+# dynamic string manipulation		
+"""		
 	#creates variables for each line beginning with target
 	#only one variable created when target is unknown	
 	targetOne = display_list[0]
@@ -70,14 +76,15 @@ def createList(target):
 	if target != "unknown":
 		variableTwo = targetTwo[len(target)+1:]
 		variableThree = targetThree[len(target)+1:]
-	
+
 	#stores edited line into list
 	if target == "unknown":
 		display_list = [variableOne]
 	else:
 		display_list = [variableOne, variableTwo, variableThree]
-	
+
 	return display_list
+"""
 
 """
 Opens and reads file 
