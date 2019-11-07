@@ -1,4 +1,5 @@
 from datetime import date, datetime
+import time
 #modules for Tyrone 
 
 def payMe():
@@ -80,15 +81,13 @@ def spinTheWheel(username, display_list):
 		formatted_time = now.strftime("%S")		
 		remainder = int(formatted_time) % numelements
 		answer = display_list[remainder]
-	
-	while True:	
-		enter = input("\nPress Enter to Activate the ARPANET Protocol")
-		if enter != "":
-			continue 
-		break
-	print("\nLoading....")
+	#delays the print out for dramatic effect in seconds
+	time.sleep(0.5)
+	print("\nActivating the ARPANET Protocol")
+	time.sleep(2)
 	
 	print("\nAttention " + username +"! Tyrone declares:... " + answer + "\n")
+	time.sleep(3)
 	
 	return answer 
 
