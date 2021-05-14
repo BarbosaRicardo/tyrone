@@ -1,4 +1,5 @@
 from datetime import date, datetime
+import time
 #modules for Tyrone 
 
 def payMe():
@@ -53,31 +54,14 @@ def createList(target):
 		with open(filename, "r", encoding= "utf8") as file:
 			for line in file:
 				if line.lower().startswith(target) == True:
-					display_list.append(line)
+					#removes the target plus the symbol
+					line = line[len(target)+1:]
+					#appends edited string to the display list
+					display_list.append(line)	
+	
 	except FileNotFoundError:
 		print("File not found. Tyrone is not in.")
 		exit()
-		
-	#creates variables for each line beginning with target
-	#only one variable created when target is unknown	
-	targetOne = display_list[0]
-	if target != "unknown":
-		targetTwo = display_list[1]
-		targetThree = display_list[2]
-	
-	#eliminates target from each line 
-	variableOne = targetOne[len(target)+1:]
-	if target != "unknown":
-		variableTwo = targetTwo[len(target)+1:]
-		variableThree = targetThree[len(target)+1:]
-	
-	#stores edited line into list
-	if target == "unknown":
-		display_list = [variableOne]
-	else:
-		display_list = [variableOne, variableTwo, variableThree]
-	
-	return display_list
 
 """
 Opens and reads file 
@@ -97,15 +81,13 @@ def spinTheWheel(username, display_list):
 		formatted_time = now.strftime("%S")		
 		remainder = int(formatted_time) % numelements
 		answer = display_list[remainder]
-	
-	while True:	
-		enter = input("\nPress Enter to Activate the ARPANET Protocol")
-		if enter != "":
-			continue 
-		break
-	print("\nLoading....")
+	#delays the print out for dramatic effect in seconds
+	time.sleep(0.5)
+	print("\nActivating the ARPANET Protocol")
+	time.sleep(2)
 	
 	print("\nAttention " + username +"! Tyrone declares:... " + answer + "\n")
+	time.sleep(3)
 	
 	return answer 
 
